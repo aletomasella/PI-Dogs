@@ -2,7 +2,7 @@ import ShowDog from "./components/ShowDog";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Henry Dogs</h1>
       <ShowDog />
     </div>

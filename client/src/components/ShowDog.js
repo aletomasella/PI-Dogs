@@ -18,15 +18,34 @@ const ShowDog = () => {
   return (
     <>
       <h3>Breeds</h3>
-      {dogs.length &&
-        dogs.map((dog) => {
-          return (
-            <div key={dog.id} style={{ display: "inline-flex", margin: "5px" }}>
-              <h2>{dog.name}</h2>
-              <img src={dog.image} alt="Dog" height="250px" width="250px" />
-            </div>
-          );
-        })}
+      <div>
+        {dogs &&
+          dogs.map((dog) => {
+            return (
+              <div
+                key={dog.id}
+                style={{
+                  display: "inline-block",
+                  margin: "5px",
+                  width: "300px",
+                  height: "fit-content",
+                  textAlign: "center",
+                  border: "2px solid black",
+                  borderRadius: "20px",
+                }}
+              >
+                <h2>{dog.name}</h2>
+                <img src={dog.image} alt="Dog" height="250px" width="100%" />
+                <p>
+                  {dog.temperament
+                    ? `Temperament : ${dog.temperament.join(" ")}`
+                    : "No information available"}
+                </p>
+                <p>{`Expected lifetime : ${dog.expectedLifetime}`}</p>
+              </div>
+            );
+          })}
+      </div>
     </>
   );
 };
