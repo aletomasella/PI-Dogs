@@ -1,8 +1,8 @@
 const filterData = (data) => {
   return {
     id: data.id,
-    weight: data.metric,
-    height: data.metric,
+    weight: data.weight.metric,
+    height: data.height.metric,
     name: data.name,
     expectedLifetime: data.life_span,
     temperament: data.temperament ? data.temperament.split(",") : null,

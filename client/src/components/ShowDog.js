@@ -4,6 +4,7 @@ import api from "./api";
 
 const ShowDog = () => {
   const [dogs, setDogs] = useState([]);
+  const [color, setColor] = useState("#B1AF7C");
 
   useEffect(() => {
     const getDogs = async () => {
@@ -15,33 +16,54 @@ const ShowDog = () => {
     getDogs();
   }, []);
 
+  const handleColor = (e) => {
+    setColor(e.target.value);
+  };
+
   return (
     <>
-      <h3>Breeds</h3>
-      <div>
+      <h1>Breeds</h1>
+      <input type="color" name="color" onChange={handleColor} value={color} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "100%",
+          flexWrap: "wrap",
+          alignContent: "space-between",
+          alignItems: "center",
+          color: "white",
+        }}
+      >
         {dogs &&
           dogs.map((dog) => {
             return (
               <div
                 key={dog.id}
                 style={{
-                  display: "inline-block",
                   margin: "5px",
-                  width: "300px",
+                  width: "400px",
                   height: "fit-content",
                   textAlign: "center",
-                  border: "2px solid black",
+                  border: "1px solid white",
                   borderRadius: "20px",
+                  backgroundColor: `${color}`,
                 }}
               >
                 <h2>{dog.name}</h2>
                 <img src={dog.image} alt="Dog" height="250px" width="100%" />
                 <p>
                   {dog.temperament
-                    ? `Temperament : ${dog.temperament.join(" ")}`
+                    ? `Temperament : ${dog.temperament.join("-")}`
                     : "No information available"}
                 </p>
+                <p>{`Peso : ${dog.weight} Kg`}</p>
                 <p>{`Expected lifetime : ${dog.expectedLifetime}`}</p>
+                <p>
+                  {dog.origin
+                    ? `Origin : ${dog.origin.join("-")}`
+                    : `Origin : No information available`}
+                </p>
               </div>
             );
           })}
