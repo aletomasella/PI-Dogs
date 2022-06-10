@@ -33,6 +33,7 @@ const ShowDog = () => {
           alignContent: "space-between",
           alignItems: "center",
           color: "white",
+          fontWeight: "600",
         }}
       >
         {dogs &&
